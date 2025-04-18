@@ -1,0 +1,13 @@
+[Unit]
+Description=Flask API Service for IoT Dashboard
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/iot-dashboard
+Environment="PATH=/home/pi/iot-dashboard/venv/bin"
+ExecStart=/home/pi/iot-dashboard/venv/bin/python app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target 

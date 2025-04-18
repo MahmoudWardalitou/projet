@@ -1,0 +1,264 @@
+﻿:root {
+  --primary: #3b82f6;
+  --primary-light: #93c5fd;
+  --secondary: #8b5cf6;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --dark: #1e293b;
+  --light: #f8fafc;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes tempChange {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease forwards;
+}
+
+/* Glassmorphism Cards */
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.dark .card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neumorphic Buttons */
+.btn-neumorphic {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.btn-neumorphic:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2), -8px -8px 15px rgba(255, 255, 255, 0.7);
+}
+
+.dark .btn-neumorphic {
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4), -5px -5px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.progress-value {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  position: relative;
+}
+
+.progress-value::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* Table Styles */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.data-table th {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  position: sticky;
+  top: 0;
+}
+
+.data-table tr {
+  transition: all 0.2s;
+}
+
+.data-table tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.01);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  border-radius: 50px;
+  font-size: 0.75em;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  transition: all 0.3s;
+}
+
+.badge-primary {
+  background-color: var(--primary);
+}
+
+.badge-warning {
+  background-color: var(--warning);
+  animation: pulse 2s infinite;
+}
+
+/* Chart Container */
+.chart-container {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+
+.chart-container:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    border-radius: 12px;
+  }
+  .sidebar-expanded {
+    width: 100%;
+    position: fixed;
+    z-index: 40;
+  }
+  .sidebar-collapsed {
+    width: 4rem;
+  }
+  .main-content {
+    margin-left: 4rem;
+  }
+}
+
+/* Icon Animations */
+.icon {
+  transition: all 0.3s;
+}
+
+.icon:hover {
+  transform: rotate(15deg) scale(1.2);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Temperature Styles */
+.temperature-display {
+  transition: color 0.5s ease, transform 0.3s ease;
+}
+
+.temperature-indicator {
+  transition: all 0.5s ease;
+}
+
+.temp-low { color: #3b82f6; }
+.temp-normal { color: #10b981; }
+.temp-high { color: #ef4444; }
+
+.indicator-low { background-color: #dbeafe; color: #1d4ed8; }
+.indicator-normal { background-color: #dcfce7; color: #047857; }
+.indicator-high { background-color: #fee2e2; color: #b91c1c; }
+
+.trend-up {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.trend-down {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.trend-neutral {
+  background-color: rgba(147, 197, 253, 0.1);
+  color: #3b82f6;
+}
+
+.trend-arrow-up {
+  transform: rotate(-45deg);
+  color: #ef4444;
+}
+
+.trend-arrow-down {
+  transform: rotate(45deg);
+  color: #10b981;
+}
